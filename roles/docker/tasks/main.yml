@@ -1,0 +1,40 @@
+---
+# tasks file for roles/docker
+- name: Mettre à jour la liste des paquets
+  apt:
+    update_cache: yes
+
+- name: Installer les dépendances nécessaires
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg-agent
+      - software-properties-common
+    state: present
+
+- name: Ajouter la clé GPG officielle de Docker
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Ajouter le dépôt Docker
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+    state: present
+
+- name: Mettre à jour la liste des paquets à nouveau
+  apt:
+    update_cache: yes
+
+- name: Installer Docker
+  apt:
+    name: docker-ce
+    state: present
+
+- name: S'assurer que le service Docker est démarré et activé
+  systemd:
+    name: docker
+    enabled: yes
+    state: started

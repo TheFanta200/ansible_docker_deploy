@@ -1,0 +1,8 @@
+---
+- hosts: HOMELAB
+  vars_files:
+    - ./global_vars/vault.yml  # Adjust the path as necessary
+  roles:
+    - { name: docker, tags: docker }
+    - { name: nginx_docker, tags: nginx_docker}
+    
