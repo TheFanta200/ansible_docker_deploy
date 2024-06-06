@@ -1,6 +1,6 @@
 # Déployer Docker et un conteneur NGINX via Ansible
 
-1. Copier l'intégralité du fichier Ansible dans `/etc`.
+1. Copier l'intégralité du fichier Ansible dans `/etc/ansible`.
 
 2. Créer le fichier vault permettant de stocker de manière sécurisée tous les comptes utilisés :
 
